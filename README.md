@@ -19,9 +19,8 @@ Il progetto è stato realizzato dagli studenti dell'indirizzo informatico del **
 
 Inizialmente concepito con chiamate dirette client-side, il progetto implementa ora un'architettura **Serverless Proxy** ospitata su **Vercel** per risolvere definitivamente il problema della sicurezza delle credenziali:
 
-1. **Inaccessibilità della API Key**: La chiave di Google Gemini (`GEMINI_API_KEY`) è memorizzata in modo sicuro nelle variabili d'ambiente sul server e non viene mai esposta o scaricata dal browser dell'utente.
-2. **Endpoint Locale**: Il file `scripts/index.js` invia le richieste della chat all'endpoint relativo locale `/api/chat`.
-3. **Funzione di Backend (`api/chat.js`)**: Una funzione serverless Node.js intercetta la richiesta del frontend, vi allega la chiave API protetta ed esegue il tunneling sicuro (proxy) verso i server ufficiali di Google, restituendo la risposta pulita al client. Ciò impedisce qualsiasi tipo di *leak* o tracciamento tramite la scheda Rete (Network) degli strumenti di sviluppo del browser.
+1. **Endpoint Locale**: Il file `scripts/index.js` invia le richieste della chat all'endpoint relativo locale `/api/chat`.
+2. **Funzione di Backend (`api/chat.js`)**: Una funzione serverless Node.js intercetta la richiesta del frontend, vi allega la chiave API protetta ed esegue il tunneling sicuro (proxy) verso i server ufficiali di Google, restituendo la risposta pulita al client. Ciò impedisce qualsiasi tipo di *leak* o tracciamento tramite la scheda Rete (Network) degli strumenti di sviluppo del browser.
 
 ---
 
@@ -32,7 +31,6 @@ La disposizione dei file segue rigorosamente i requisiti strutturali del Project
 ```text
 artemis-ai/
 ├── index.html                 # Interfaccia grafica principale della chat
-├── .env                       # File locale per la gestione delle variabili d'ambiente
 ├── analisi.pdf                # Documento di Analisi tecnica delle scelte di progetto
 ├── manuale_utente.pdf         # Manuale d'uso ufficiale e documentazione delle funzionalità
 │
